@@ -26,10 +26,14 @@ galleryEl.addEventListener("click", onClick);
 
 function onClick(evt) {
   evt.preventDefault();
-  const urlOrEl = evt.target.dataset.source;
+  if (!evt.target.classList.contains("gallery__image")) {
+    return;
+  }
+  const urlOrdinaryImgEl = evt.target.dataset.source;
 
   const instance = basicLightbox.create(`
-    <img src="${urlOrEl}" >
+    <img src="${urlOrdinaryImgEl}" >
+    
 `);
 
   instance.show();
